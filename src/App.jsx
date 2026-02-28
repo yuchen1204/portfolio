@@ -55,26 +55,29 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-bg)' }}>
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm border-b border-gray-100' : 'bg-transparent'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm border-b' : 'bg-transparent'}`} style={{ borderColor: scrolled ? 'var(--color-border-light)' : 'transparent' }}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <button onClick={() => scrollToSection('home')} className="text-base font-semibold text-gray-900 hover:text-pink-500 transition-colors cursor-pointer tracking-tight">
+          <button onClick={() => scrollToSection('home')} className="text-base font-semibold transition-colors cursor-pointer tracking-tight" style={{ color: 'var(--color-text)' }}>
             yuchenx
           </button>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex gap-6">
-            {['about', 'projects', 'skills', 'contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className="text-sm font-medium text-gray-500 hover:text-pink-500 transition-colors cursor-pointer capitalize"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
+            <div className="hidden md:flex gap-6">
+              {['about', 'projects', 'skills', 'contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item)}
+                  className="text-sm font-medium transition-colors cursor-pointer capitalize"
+                  style={{ color: 'var(--color-text-muted)' }}
+                  onMouseEnter={(e) => e.target.style.color = 'var(--color-primary)'}
+                  onMouseLeave={(e) => e.target.style.color = 'var(--color-text-muted)'}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
 
           {/* Mobile Menu Button */}
           <button 
@@ -93,12 +96,15 @@ function App() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="md:hidden bg-white border-b border-gray-100">
+          <div className="md:hidden bg-white border-b" style={{ borderColor: 'var(--color-border-light)' }}>
             {['about', 'projects', 'skills', 'contact'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="block w-full text-left px-6 py-3 text-sm font-medium text-gray-500 hover:text-pink-500 capitalize cursor-pointer"
+                className="block w-full text-left px-6 py-3 text-sm font-medium capitalize cursor-pointer"
+                style={{ color: 'var(--color-text-muted)' }}
+                onMouseEnter={(e) => e.target.style.color = 'var(--color-primary)'}
+                onMouseLeave={(e) => e.target.style.color = 'var(--color-text-muted)'}
               >
                 {item}
               </button>
@@ -110,8 +116,9 @@ function App() {
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-16 relative overflow-hidden">
         {/* Decorative blobs */}
-        <div className="absolute top-20 -left-32 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
-        <div className="absolute bottom-20 -right-32 w-72 h-72 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-20 -left-32 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse" style={{ backgroundColor: '#fbcfe8' }}></div>
+        <div className="absolute bottom-20 -right-32 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse" style={{ backgroundColor: '#ddd6fe', animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{ backgroundColor: '#f9a8d4', animationDelay: '2s' }}></div>
         
         <div className="max-w-2xl mx-auto text-center relative z-10">
           <div className="fade-in mb-12">
@@ -130,31 +137,41 @@ function App() {
               />
             </div>
           </div>
-          <div className="fade-in">
-            <p className="text-sm font-medium text-pink-500 uppercase tracking-widest mb-4">Full Stack Developer</p>
-          </div>
-          <h1 className="fade-in stagger-1 text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+              <div className="fade-in">
+                <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--color-primary)' }}>Full Stack Developer</p>
+              </div>
+              <h1 className="fade-in stagger-1 text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight" style={{ color: 'var(--color-text)' }}>
             yuchenx 雨晨
           </h1>
-          <div className="fade-in stagger-2">
-            <p className="text-lg md:text-xl text-gray-500 mb-10 max-w-lg mx-auto leading-relaxed">
+              <div className="fade-in stagger-2">
+                <p className="text-lg md:text-xl mb-10 max-w-lg mx-auto leading-relaxed" style={{ color: 'var(--color-text-light)' }}>
               全栈开发者，后端使用 Go，数据库常用 PostgreSQL，前端喜欢 React。具备红队网络安全技术背景。
             </p>
           </div>
-          <div className="fade-in stagger-3 flex flex-wrap justify-center gap-3">
-            <button 
-              onClick={() => scrollToSection('projects')}
-              className="bg-gradient-to-r from-pink-500 to-violet-500 text-white px-6 py-2.5 text-sm font-medium cursor-pointer hover:shadow-lg hover:opacity-90 transition-all duration-200"
-            >
-              View Projects
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="bg-white text-gray-900 border border-gray-200 px-6 py-2.5 text-sm font-medium cursor-pointer hover:border-pink-300 hover:text-pink-500 transition-all duration-200"
-            >
-              Get In Touch
-            </button>
-          </div>
+              <div className="fade-in stagger-3 flex flex-wrap justify-center gap-3">
+                <button
+                  onClick={() => scrollToSection('projects')}
+                  className="text-white px-6 py-2.5 text-sm font-medium cursor-pointer hover:shadow-lg hover:opacity-90 transition-all duration-200"
+                  style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))' }}
+                >
+                  View Projects
+                </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="bg-white px-6 py-2.5 text-sm font-medium cursor-pointer transition-all duration-200"
+                  style={{ color: 'var(--color-text)', border: '1px solid var(--color-border)' }}
+                  onMouseEnter={(e) => {
+                    e.target.style.borderColor = 'var(--color-primary-light)';
+                    e.target.style.color = 'var(--color-primary)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.borderColor = 'var(--color-border)';
+                    e.target.style.color = 'var(--color-text)';
+                  }}
+                >
+                  Get In Touch
+                </button>
+              </div>
         </div>
         
         {/* Scroll indicator */}
@@ -166,29 +183,29 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 px-6 bg-gradient-to-b from-white to-pink-50/50">
+      <section id="about" className="py-24 px-6 bg-gradient-to-b from-white" style={{ background: 'linear-gradient(to bottom, white, var(--color-primary-subtle))' }}>
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">About</h2>
-          
-          <div className="space-y-6 text-gray-600 leading-relaxed">
+          <h2 className="text-2xl font-bold mb-8 text-center" style={{ color: 'var(--color-text)' }}>About</h2>
+
+          <div className="space-y-6 leading-relaxed" style={{ color: 'var(--color-text-light)' }}>
             <p>
-              我是一名<span className="text-gray-900 font-medium">全栈开发者</span>，后端熟悉 Go 语言，数据库常用 PostgreSQL，前端偏好 React。
+              我是一名<span className="font-medium" style={{ color: 'var(--color-text)' }}>全栈开发者</span>，后端熟悉 Go 语言，数据库常用 PostgreSQL，前端偏好 React。
             </p>
             <p>
-              同时具备<span className="text-gray-900 font-medium">红队网络安全技术</span>背景，曾在云顶高原度假村担任荷官，现离职在家寻找新的工作机会。
+              同时具备<span className="font-medium" style={{ color: 'var(--color-text)' }}>红队网络安全技术</span>背景，曾在云顶高原度假村担任荷官，现离职在家寻找新的工作机会。
             </p>
             <p>
-              我热爱技术，擅长 <span className="text-gray-900 font-medium">Vibe Coding</span>，喜欢用代码创造有趣的项目。
+              我热爱技术，擅长 <span className="font-medium" style={{ color: 'var(--color-text)' }}>Vibe Coding</span>，喜欢用代码创造有趣的项目。
             </p>
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 px-6 bg-gradient-to-b from-pink-50/50 to-violet-50/50">
+      <section id="projects" className="py-24 px-6" style={{ background: 'linear-gradient(to bottom, var(--color-primary-subtle), var(--color-accent-light))' }}>
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">Projects</h2>
-          <p className="text-center text-gray-400 text-sm mb-12">近期作品</p>
+          <h2 className="text-2xl font-bold mb-2 text-center" style={{ color: 'var(--color-text)' }}>Projects</h2>
+          <p className="text-center text-sm mb-12" style={{ color: 'var(--color-text-muted)' }}>近期作品</p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {projects.map((project, index) => (
@@ -208,11 +225,11 @@ function App() {
                   />
                 </div>
                 <div className="p-5">
-                  <h3 className="text-base font-semibold text-gray-900 mb-2">{project.title}</h3>
-                  <p className="text-gray-400 mb-4 text-sm leading-relaxed">{project.description}</p>
+                  <h3 className="text-base font-semibold mb-2" style={{ color: 'var(--color-text)' }}>{project.title}</h3>
+                  <p className="mb-4 text-sm leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="bg-pink-50 text-pink-500 px-2.5 py-1 text-xs font-medium">
+                      <span key={tag} className="px-2.5 py-1 text-xs font-medium" style={{ backgroundColor: 'var(--color-primary-subtle)', color: 'var(--color-primary)' }}>
                         {tag}
                       </span>
                     ))}
@@ -225,20 +242,32 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 px-6 bg-gradient-to-b from-violet-50/50 to-white relative overflow-hidden">
+      <section id="skills" className="py-24 px-6 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, var(--color-accent-light), white)' }}>
         {/* Decorative */}
-        <div className="absolute top-10 right-10 w-32 h-32 bg-pink-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30"></div>
-        <div className="absolute bottom-10 left-10 w-40 h-40 bg-violet-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30"></div>
-        
+        <div className="absolute top-10 right-10 w-32 h-32 rounded-full mix-blend-multiply filter blur-2xl opacity-40" style={{ backgroundColor: '#fbcfe8' }}></div>
+        <div className="absolute bottom-10 left-10 w-40 h-40 rounded-full mix-blend-multiply filter blur-2xl opacity-40" style={{ backgroundColor: '#ddd6fe' }}></div>
+
         <div className="max-w-3xl mx-auto relative z-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Skills</h2>
-          
+          <h2 className="text-2xl font-bold mb-8 text-center" style={{ color: 'var(--color-text)' }}>Skills</h2>
+
           <div className="flex flex-wrap justify-center gap-2.5">
             {skills.map((skill, index) => (
-              <div 
+              <div
                 key={skill}
-                className="bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600 cursor-pointer hover:border-pink-300 hover:text-pink-500 transition-all duration-200"
-                style={{ animationDelay: `${index * 0.05}s` }}
+                className="bg-white border px-4 py-2 text-sm cursor-pointer transition-all duration-200"
+                style={{
+                  borderColor: 'var(--color-border)',
+                  color: 'var(--color-text-light)',
+                  animationDelay: `${index * 0.05}s`
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--color-primary-light)';
+                  e.currentTarget.style.color = 'var(--color-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--color-border)';
+                  e.currentTarget.style.color = 'var(--color-text-light)';
+                }}
               >
                 {skill}
               </div>
@@ -248,19 +277,22 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 bg-gray-900 text-white">
+      <section id="contact" className="py-24 px-6 text-white" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))' }}>
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-gray-400 mb-10">
+          <p className="mb-10" style={{ color: 'rgba(255,255,255,0.8)' }}>
             有兴趣一起合作的话，随时联系我。
           </p>
-          
+
           <div className="flex justify-center gap-4 mb-10">
             {socialLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.url}
-                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-pink-500 transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors cursor-pointer"
+                style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.25)'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)'}
                 aria-label={link.name}
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -271,10 +303,11 @@ function App() {
           </div>
 
           <div className="inline-block">
-            <p className="text-gray-500 text-xs mb-2">Email</p>
-            <a 
-              href="mailto:yuchen@yuchen.my" 
-              className="text-pink-400 hover:text-pink-300 transition-colors"
+            <p className="text-xs mb-2" style={{ color: 'rgba(255,255,255,0.6)' }}>Email</p>
+            <a
+              href="mailto:yuchen@yuchen.my"
+              className="hover:opacity-80 transition-opacity"
+              style={{ color: 'white' }}
             >
               yuchen@yuchen.my
             </a>
@@ -283,9 +316,9 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-white border-t border-gray-100">
+      <footer className="py-8 px-6 bg-white border-t" style={{ borderColor: 'var(--color-border-light)' }}>
         <div className="max-w-5xl mx-auto text-center">
-          <p className="text-xs text-gray-400">
+          <p className="text-xs" style={{ color: 'var(--color-text-muted)' }}>
             &copy; 2024 yuchenx
           </p>
         </div>
