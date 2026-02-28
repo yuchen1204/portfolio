@@ -59,9 +59,12 @@ function App() {
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm border-b' : 'bg-transparent'}`} style={{ borderColor: scrolled ? 'var(--color-border-light)' : 'transparent' }}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <button onClick={() => scrollToSection('home')} className="text-base font-semibold transition-colors cursor-pointer tracking-tight" style={{ color: 'var(--color-text)' }}>
-            yuchenx
-          </button>
+<button onClick={() => scrollToSection('home')} className="text-base font-semibold transition-colors cursor-pointer tracking-tight flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
+              <svg className="w-5 h-5" fill="var(--color-primary)" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              yuchenX
+            </button>
           
           {/* Desktop Menu */}
             <div className="hidden md:flex gap-6">
@@ -132,7 +135,7 @@ function App() {
             <div className="flex justify-center -mt-10 relative z-10">
               <img 
                 src="https://blogdata.yuchen.my/IMG_20250316_223312_263.jpg" 
-                alt="yuchenx" 
+                alt="yuchenX" 
                 className="w-28 h-28 object-cover rounded-full shadow-lg border-4 border-white"
               />
             </div>
@@ -141,7 +144,7 @@ function App() {
                 <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--color-primary)' }}>Full Stack Developer</p>
               </div>
               <h1 className="fade-in stagger-1 text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight" style={{ color: 'var(--color-text)' }}>
-            yuchenx 雨晨
+            yuchenX 雨晨
           </h1>
               <div className="fade-in stagger-2">
                 <p className="text-lg md:text-xl mb-10 max-w-lg mx-auto leading-relaxed" style={{ color: 'var(--color-text-light)' }}>
@@ -319,7 +322,7 @@ function App() {
       <footer className="py-8 px-6 bg-white border-t" style={{ borderColor: 'var(--color-border-light)' }}>
         <div className="max-w-5xl mx-auto text-center">
           <p className="text-xs" style={{ color: 'var(--color-text-muted)' }}>
-            &copy; 2024 yuchenx
+            ©️ yuchenX 2026
           </p>
         </div>
       </footer>
