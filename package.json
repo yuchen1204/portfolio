@@ -7,10 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
-  "homepage": "https://yuchen1204.github.io/portfolio",
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
